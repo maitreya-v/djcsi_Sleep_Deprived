@@ -11,12 +11,15 @@ from .otp import *
 from django_otp import verify_token
 # from ..parental_control_system.settings import *
 from django.conf import settings
+import requests
 
 # Web-site blocker function
 number_requests_total = 0
 
 # Visited web site UNIX timestamp with block boolean (whether blocked or not)
 
+# To enable and disable parental controls
+enable = False
 
 # Create your views here.
 @api_view(['POST'])
@@ -93,3 +96,35 @@ def Otp(request):
             token, created = Token.objects.get_or_create(user=user)
             return Response({'token': token.key})
     return Response({'Error': 'Invalid OTP'}, status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def Web_Block(request):
+    if enable == False:
+        return Response({'error': 'request denied'}, status=status.HTTP_403_FORBIDDEN)
+    url = request.data.get('url')
+    url = 'http://www.ucoz.com/'
+
+    params = {'apikey': '479cb6bdf948a472d920934d84df34fb26559f485ef6c2c2e1306ad647ce3613', 'resource': url}
+    response = requests.get('https://www.virustotal.com/vtapi/v2/url/report', params=params)
+
+    if response.json()['positives'] > 0:
+        print('The URL is malicious.')
+        return Response({'status': 'malicious'}, status=status.HTTP_200_OK)
+    else:
+        print('The URL is safe.')
+        return Response({'status': 'safe'}, status=status.HTTP_200_OK)
+    
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def Enable(request):
+    global enable
+    enable = True
+    return Response({'enable': 'True'}, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def Disable(request):
+    global enable
+    enable = False
+    return Response({'disable': 'True'}, status=status.HTTP_200_OK)
