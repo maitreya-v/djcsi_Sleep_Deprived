@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography, MenuItem, Slider, ThemeProvider, createMuiTheme, withStyles } from "@mui/material";
+import { Box, Button, TextField, Typography, MenuItem, Slider } from "@mui/material";
 import Header from "../components/Header";
 
 const Settings = () => {
