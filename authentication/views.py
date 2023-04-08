@@ -99,12 +99,12 @@ def Otp(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def Web_Block(request):
+def Web_Block(request, url):
     if enable == False:
         return Response({'error': 'request denied'}, status=status.HTTP_403_FORBIDDEN)
     url = request.data.get('url')
-    url = 'http://www.ucoz.com/'
-
+    # url = 'http://www.ucoz.com/'
+    # url = url
     params = {'apikey': '479cb6bdf948a472d920934d84df34fb26559f485ef6c2c2e1306ad647ce3613', 'resource': url}
     response = requests.get('https://www.virustotal.com/vtapi/v2/url/report', params=params)
 
