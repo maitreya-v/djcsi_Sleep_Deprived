@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+// function to trigger build when the app is run
+void main() {
+  runApp(MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => const Login(),
+      //'/second': (context) => const SecondRoute(),
+      '/third': (context) => const ThirdRoute(),
+      //'/login': (context) => const Login(),
+      '/fourth': (context) => const FourthRoute(),
+    },
+  ));
+}
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  static const String _title = 'Sample App';
-
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const MyStatefulWidget(),
-      ),
-    );
+    return Scaffold(body: MyStatefulWidget());
   }
 }
 
@@ -40,7 +43,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 child: const Text(
-                  'TutorialKart',
+                  'Smart Parent',
                   style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.w500,
@@ -88,26 +91,148 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: ElevatedButton(
                   child: const Text('Login'),
                   onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
+                    Navigator.pushNamed(context, '/third');
+                    //print(nameController.text);
+                    //print(passwordController.text);
                   },
                 )),
-            Row(
-              children: <Widget>[
-                const Text('Does not have account?'),
-                TextButton(
-                  child: const Text(
-                    'Sign in',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    //signup screen
-                  },
-                )
-              ],
-              mainAxisAlignment: MainAxisAlignment.center,
-            ),
           ],
         ));
+  }
+}
+
+//class SecondRoute extends StatelessWidget {
+//  const SecondRoute({Key? key}) : super(key: key);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      appBar: AppBar(
+//        title: const Text("Signup"),
+//        backgroundColor: Colors.blueAccent,
+//      ), // AppBar
+//      body: Center(
+//        child: ElevatedButton(
+//          onPressed: () {
+//            Navigator.pop(context);
+//          },
+//          child: const Text('Back!'),
+//        ), // ElevatedButton
+//      ), // Center
+//    ); // Scaffold
+//  }
+//}
+
+class ThirdRoute extends StatelessWidget {
+  const ThirdRoute({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: OTP(),
+    );
+  }
+}
+
+class OTP extends StatefulWidget {
+  const OTP({Key? key}) : super(key: key);
+
+  @override
+  State<OTP> createState() => _OTP();
+}
+
+class _OTP extends State<OTP> {
+  //TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: ListView(children: <Widget>[
+        Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'TutorialKart',
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 30),
+            )),
+        Container(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          child: TextField(
+            obscureText: true,
+            controller: passwordController,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'OTP',
+            ),
+          ),
+        ),
+        Container(
+            height: 50,
+            padding: const EdgeInsets.all(10),
+            child: ElevatedButton(
+              child: const Text('Submit'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/fourth');
+                //print(nameController.text);
+                //print(passwordController.text);
+              },
+            ))
+      ]),
+    );
+  }
+}
+
+class FourthRoute extends StatelessWidget {
+  const FourthRoute({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Landing(),
+    );
+  }
+}
+
+class Landing extends StatefulWidget {
+  const Landing({Key? key}) : super(key: key);
+
+  @override
+  State<Landing> createState() => _Landing();
+}
+
+class _Landing extends State<Landing> {
+  //TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: ListView(children: <Widget>[
+        Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'Smart Parent',
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 30),
+            )),
+        Container(
+            height: 50,
+            padding: const EdgeInsets.all(10),
+            child: ElevatedButton(
+              child: const Text('Enable'),
+              onPressed: () {
+                //print(nameController.text);
+                //print(passwordController.text);
+              },
+            ))
+      ]),
+    );
   }
 }
