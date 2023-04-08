@@ -1,0 +1,23 @@
+{
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "num_children": 2,
+        "testimonial": "As a parent of two young kids, I was worried about their exposure to inappropriate content online. Thanks to this website's parental control features, I can now monitor and limit their access to certain websites and apps. It has given me peace of mind and has made my job as a parent much easier."
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "num_children": 1,
+        "testimonial": "I have a teenage daughter who spends a lot of time on her phone and laptop. While I trust her, I also know that there are dangers online that she may not be aware of. This website's parental control tools have allowed me to set limits on her screen time and monitor her online activity. It has been a great resource for our family."
+      },
+      {
+        "id": 3,
+        "name": "Mark Johnson",
+        "num_children": 3,
+        "testimonial": "I used to worry about my kids stumbling upon inappropriate content while browsing the web. Since using this website's parental control features, I no longer have to worry. It is easy to set up and has helped me create a safer online environment for my kids."
+      }
+    ]
+  }
+  
