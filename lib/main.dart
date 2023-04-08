@@ -18,7 +18,13 @@ class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: MyStatefulWidget());
+    return Scaffold(
+        body: Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('../asset/images/background2.jpg'))),
+      child: MyStatefulWidget(),
+    ));
   }
 }
 
@@ -127,9 +133,14 @@ class ThirdRoute extends StatelessWidget {
   const ThirdRoute({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: OTP(),
-    );
+    return Scaffold(
+        body: Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('../asset/images/background2.jpg'),
+              fit: BoxFit.cover)),
+      child: OTP(),
+    ));
   }
 }
 
@@ -190,9 +201,14 @@ class FourthRoute extends StatelessWidget {
   const FourthRoute({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Landing(),
-    );
+    return Scaffold(
+        body: Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('../asset/images/background2.jpg'),
+              fit: BoxFit.cover)),
+      child: Landing(),
+    ));
   }
 }
 
