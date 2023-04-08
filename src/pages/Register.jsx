@@ -107,15 +107,16 @@ const Register = () => {
     }
     var data = {
       name: user.name,
+      username: user.name,
       email: user.email,
-      phone_no: user.number,
+      mobile: user.number,
       password: user.password,
-      confirm_password: user.password,
+      // confirm_password: user.password,
     };
 
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/accounts/register/",
+      url: "https://efd8-136-232-1-174.ngrok-free.app/api/register/",
       data: data,
     };
 
@@ -124,8 +125,8 @@ const Register = () => {
         const userAvatar = generateAvatar();
         const uuid = data.email.split("@")[0];
         // const user = new CometChat.User(uuid);
-        user.setName(data.name);
-        user.setAvatar(userAvatar);
+        // user.setName(data.name);
+        // user.setAvatar(userAvatar);
 
         // CometChat.createUser(user, COMETCHAT_CONSTANTS.AUTH_KEY).then(
         //   (x) => {
@@ -136,6 +137,8 @@ const Register = () => {
         //     console.log("error", error);
         //   }
         // );
+        console.log(data)
+        console.log(response)
         localStorage.setItem("token", response.data.token);
         navigate("/");
       })

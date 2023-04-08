@@ -85,7 +85,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="12,361"
-            subtitle="Emails Sent"
+            subtitle="Verification Emails Sent"
             progress="0.75"
             increase="+14%"
             icon={
@@ -104,7 +104,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="431,225"
-            subtitle="Sales Obtained"
+            subtitle="Total time spent (in minutes)"
             progress="0.50"
             increase="+21%"
             icon={
@@ -180,7 +180,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                4 hours 31 mins
+                4 hours 31 minutes
               </Typography>
             </Box>
             <Box>
@@ -205,7 +205,7 @@ const Dashboard = () => {
             display="flex"
             justifyContent="space-between"
             alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
+            borderBottom={`3px solid ${colors.primary[500]}`}
             colors={colors.grey[100]}
             p="15px"
           >
@@ -219,7 +219,7 @@ const Dashboard = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
+              borderBottom={`1px solid ${colors.primary[500]}`}
               p="15px"
             >
               <Box>
@@ -283,7 +283,7 @@ const Dashboard = () => {
 
 
         <Box
-          gridColumn="span 4"
+          gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -292,7 +292,7 @@ const Dashboard = () => {
             display="flex"
             justifyContent="space-between"
             alignItems="center"
-            borderBottom={`4px solid ${colors.primary[500]}`}
+            borderBottom={`3px solid ${colors.primary[500]}`}
             colors={colors.grey[100]}
             p="15px"
           >
@@ -306,7 +306,7 @@ const Dashboard = () => {
               display="flex"
               justifyContent="space-between"
               alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
+              borderBottom={`1px solid ${colors.primary[500]}`}
               p="15px"
             >
               <Box>

@@ -24,13 +24,15 @@ const Login = () => {
   })
   const [show, setShow] = useState(false)
   const loginUser = () => {
+    console.log(user.email,user.password)
+
     var data = new FormData();
     data.append("email", user.email);
     data.append("password", user.password);
     const uuid = user.email.split("@")[0];
     var config = {
       method: "post",
-      url: "http://127.0.0.1:8000/accounts/login/",
+      url: "https://efd8-136-232-1-174.ngrok-free.app/api/login/",
       data: data,
     };
 
@@ -38,8 +40,9 @@ const Login = () => {
       .then(function (response) {
         console.log(response)
         localStorage.setItem("token", response.data.token);
-        
-        navigate('/')
+        localStorage.setItem('email',user.email)
+        localStorage.setItem('password',user.password)
+        navigate('/otp')
       })
       .catch(function (error) {
         toast.error("Invalid Credentials", {

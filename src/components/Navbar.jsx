@@ -75,18 +75,7 @@ const Navbar = () => {
             <div className={`bg-[#a4a9fc] w-4 capitalize h-1 rounded`}></div>
           )}
         </Link>
-        <Link to="/profile" className="flex flex-col items-center">
-          <h1
-            className={`font-semibold capitalize text-lg text-gray-${
-              location.pathname === "/profile" ? "900" : "700"
-            }`}
-          >
-            {t("Profile")}
-          </h1>
-          {location.pathname === "/profile" && (
-            <div className="bg-[#a4a9fc] w-4 h-1 rounded"></div>
-          )}
-        </Link>
+      
         <Link to="/dashboard" className="flex flex-col items-center">
           <h1
             className={`font-semibold capitalize text-lg text-gray-${
@@ -106,20 +95,22 @@ const Navbar = () => {
         <div className="flex gap-4 items-center">
           {/* <button
             onClick={() => navigate('/map')}
+
+            
             className={`text-gray-100 text-sm px-4 py-4 bg-${color}-500 rounded-full`}
           >
             <FiMapPin/>
           </button> */}
           <button
             onClick={() => logout()}
-            className={`text-gray-100 text-sm px-8 py-4 bg-${color}-500 rounded-full`}
+            className={`text-gray-100 text-sm px-8 py-4 bg-[#a4a9fc] rounded-full`}
           >
             {t("logout")}
           </button>
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button
-                className={`text-gray-100 text-sm px-8 py-4 bg-${color}-500 rounded-full`}
+                className={`text-gray-100 text-sm px-8 py-4 bg-[#a4a9fc] rounded-full`}
               >
                 lang <MdOutlineLanguage className="inline" />
               </Menu.Button>

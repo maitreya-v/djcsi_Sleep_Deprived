@@ -19,6 +19,7 @@ import { ALAN_API } from "./constants";
 import BarGraph from './components/BarGraph';
 import ErrorPage from './pages/ErrorPage';
 import WidgetLogin from './pages/WidgetLogin';
+import Otp from './pages/otp/Otp';
 // import Card from './pages/OTP/card'
 // import Navbar from './components/Navbar'
 
@@ -51,6 +52,7 @@ function App() {
         {/* <Route exact path="/" element={}/> */}
         {/* <Route path="/profile" element={<Profile/>}/> */}
         {/* <Route path="/otp" element={<Card/>}/> */}
+        <Route path="/otp" element={<Otp/>}/>
         <Route path="/bar" element={<BarGraph/>}/>
         <Route path="/testing" element={<Testing/>}/>
         <Route path="/" element={<Home/>}/>
