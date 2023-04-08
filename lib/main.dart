@@ -182,7 +182,7 @@ class _OTP extends State<OTP> {
           ),
         ),
         Container(
-            height: 50,
+            height: 70,
             padding: const EdgeInsets.all(10),
             child: ElevatedButton(
               child: const Text('Submit'),
@@ -206,6 +206,7 @@ class FourthRoute extends StatelessWidget {
       decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('../asset/images/background2.jpg'),
+              opacity: 0.5,
               fit: BoxFit.cover)),
       child: Landing(),
     ));
@@ -239,7 +240,16 @@ class _Landing extends State<Landing> {
                   fontSize: 30),
             )),
         Container(
-            height: 50,
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: 590,
+          alignment: Alignment.center,
+          child: const Text(
+            "Welcome to Smart Parent. Before you can start using our app, you must read and agree to the following terms and conditions:\nPrivacy Policy:\nOur Privacy Policy outlines how we collect, use, and share your personal information, such as your name, email address, and activity data. By using our app, you agree to the terms outlined in our Privacy Policy.\nUser Agreement:\nOur User Agreement outlines the rules and guidelines for using our app, including prohibited activities and our right to terminate your account if you violate these rules. By using our app, you agree to the terms outlined in our User Agreement.\nAccess to Device Data:\nOur app requires access to certain device data, such as GPS location, device ID, and other information necessary for the app to function properly. By using our app, you agree to grant us access to this data.\nData Collection and Use:\nOur app collects and uses data about your physical activity, such as steps taken, calories burned, and distance traveled. This data may be shared with third-party partners. By using our app, you agree to the terms outlined in our Data Collection and Use policy.\nTermination and Suspension:\nWe reserve the right to terminate or suspend your account for any reason, including violation of our User Agreement. By using our app, you agree to the consequences of such termination or suspension.\nIntellectual Property Rights:\nWe own any intellectual property related to our app, such as trademarks, logos, and copyrights. By using our app, you agree to respect our intellectual property rights.\nIndemnification:\nYou agree to indemnify us and our affiliates from any claims or damages arising from your use of our app.\nLimitation of Liability:\nWe are not liable for any damages or losses resulting from your use of our app. By using our app, you agree to our Limitation of Liability policy.",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200),
+          ),
+        ),
+        Container(
+            height: 70,
             padding: const EdgeInsets.all(10),
             child: ElevatedButton(
               child: const Text('Enable'),
