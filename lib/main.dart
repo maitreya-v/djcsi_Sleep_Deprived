@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:usage_stats/usage_stats.dart';
+import 'dart:async';
+import 'package:query/query.dart';
+import 'api_service.dart';
+import 'package:flutter_background/flutter_background.dart';
 
 // function to trigger build when the app is run
 void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const Login(),
-      //'/second': (context) => const SecondRoute(),
-      '/third': (context) => const ThirdRoute(),
-      //'/login': (context) => const Login(),
-      '/fourth': (context) => const FourthRoute(),
-    },
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  //FlutterBackground.initialize(onBackgroundTask);
+  runApp(MyAPP());
+}
+
+//void onBackgroundTask() {}
+//void startBackgroundTask() {
+//  FlutterBackground.executeTask(onBackgroundTask);
+//}
+
+//void onBackgroundTask() {}
+
+class MyAPP extends StatelessWidget {
+  const MyAPP({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Login(),
+        //'/second': (context) => const SecondRoute(),
+        '/third': (context) => const ThirdRoute(),
+        //'/login': (context) => const Login(),
+        '/fourth': (context) => const FourthRoute(),
+      },
+    );
+  }
 }
 
 class Login extends StatelessWidget {
@@ -223,6 +246,63 @@ class Landing extends StatefulWidget {
 class _Landing extends State<Landing> {
   //TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  List<EventUsageInfo> events = [];
+  Map<String?, NetworkInfo?> _netInfoMap = Map();
+
+  @override
+  void initState() {
+    super.initState();
+
+    initUsage();
+  }
+
+  Future<void> initUsage() async {
+    try {
+      UsageStats.grantUsagePermission();
+
+      DateTime endDate = new DateTime.now();
+      DateTime startDate = endDate.subtract(Duration(days: 1));
+
+      List<EventUsageInfo> queryEvents =
+          await UsageStats.queryEvents(startDate, endDate);
+      List<NetworkInfo> networkInfos = await UsageStats.queryNetworkUsageStats(
+        startDate,
+        endDate,
+        networkType: NetworkType.all,
+      );
+
+      Map<String?, NetworkInfo?> netInfoMap = Map.fromIterable(networkInfos,
+          key: (v) => v.packageName, value: (v) => v);
+
+      List<UsageInfo> t = await UsageStats.queryUsageStats(startDate, endDate);
+
+      for (var i in t) {
+        if (double.parse(i.totalTimeInForeground!) > 0) {
+          print(
+              DateTime.fromMillisecondsSinceEpoch(int.parse(i.firstTimeStamp!))
+                  .toIso8601String());
+
+          print(DateTime.fromMillisecondsSinceEpoch(int.parse(i.lastTimeStamp!))
+              .toIso8601String());
+
+          print(i.packageName);
+          print(DateTime.fromMillisecondsSinceEpoch(int.parse(i.lastTimeUsed!))
+              .toIso8601String());
+          print(int.parse(i.totalTimeInForeground!) / 1000 / 60);
+
+          print('-----\n');
+        }
+      }
+
+      this.setState(() {
+        events = queryEvents.reversed.toList();
+        _netInfoMap = netInfoMap;
+      });
+    } catch (err) {
+      print(err);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
