@@ -120,11 +120,12 @@ timeout_end = None
 def Login(request):
     global temp_otp
     global timeout_start
-    global usersession
+    global usersession, enable
     email = request.data.get('email')
     password = request.data.get('password')
     user = authenticate(request, email=email, password=password)
     usersession = user
+    enable = True
     # device = create_totp_device(user)
     if user is not None:
         token, created = Token.objects.get_or_create(user=user)
@@ -180,7 +181,7 @@ def Otp(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def Web_Block(request, url):
+def Web_Block(request):
     if enable == False:
         return Response({'error': 'request denied'}, status=status.HTTP_403_FORBIDDEN)
     url = request.data.get('url')
