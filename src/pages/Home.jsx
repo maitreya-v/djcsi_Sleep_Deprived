@@ -60,14 +60,14 @@ const Home = () => {
   const { t } = useTranslation();
 
 
-  useEffect(()=>{
-    const postObj={
-      'url':'www.ucoz.com'
-    }
-    axios.post('https://efd8-136-232-1-174.ngrok-free.app/api/web_block/',postObj).then((res)=>{
-      console.log(res.data.status)
-    })
-  })
+  // useEffect(()=>{
+  //   const postObj={
+  //     'url':'www.ucoz.com'
+  //   }
+  //   axios.post('https://efd8-136-232-1-174.ngrok-free.app/api/web_block/',postObj).then((res)=>{
+  //     console.log(res.data.status)
+  //   })
+  // })
 
   const [theme, setTheme] = useState("emerald");
   useEffect(() => {

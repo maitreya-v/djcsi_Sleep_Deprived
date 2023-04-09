@@ -54,6 +54,22 @@ const Dashboard = () => {
             Go Back
           </Button>
             </Link>
+          <Link to='/parser'>
+          <Button
+            sx={{
+              backgroundColor: colors.blueAccent[700],
+              color: colors.grey[100],
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+              marginRight: "20px"
+            }}
+          >
+            
+            {/* <KeyboardBackspaceOutlinedIcon sx={{ mr: "10px" }} /> */}
+            Parser
+          </Button>
+            </Link>
           <Button
             sx={{
               backgroundColor: colors.blueAccent[700],
