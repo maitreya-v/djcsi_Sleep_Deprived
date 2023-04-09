@@ -88,6 +88,18 @@ const Navbar = () => {
             <div className={`bg-${color}-500 w-4 h-1 rounded`}></div>
           )}
         </Link>
+        <Link to="/settings" className="flex flex-col items-center">
+          <h1
+            className={`font-semibold capitalize text-lg text-gray-${
+              location.pathname === "/settings" ? "900" : "700"
+            }`}
+          >
+            {t("Settings")}
+          </h1>
+          {location.pathname === "/settings" && (
+            <div className={`bg-${color}-500 w-4 h-1 rounded`}></div>
+          )}
+        </Link>
        
         
       </div>

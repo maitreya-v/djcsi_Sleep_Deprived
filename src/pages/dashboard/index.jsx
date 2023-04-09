@@ -17,13 +17,17 @@ import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspace
 import { Link } from "react-router-dom";
 import BarGraph from "../../components/BarGraph";
 import TimeRemaining from '../../components/TimeRemaining';
-
+import BlockedLog from '../BlockedLog.json'
+import RecentlyViewed from '../RecentlyVisited.json'
+import { useEffect } from "react";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
+ 
+  
 
   return (
-    
   <>
   {/* <Navbar/> */}
    {/* <div data-aos='zoom-in-up'> */}
@@ -155,7 +159,7 @@ const Dashboard = () => {
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -196,7 +200,7 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn="span 6"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -213,9 +217,9 @@ const Dashboard = () => {
               Recently Visited Websites
             </Typography>
           </Box>
-          {mockTransactions.map((transaction, i) => (
+          {RecentlyViewed.map((item) => (
             <Box
-              key={`${transaction.txId}-${i}`}
+              key={item.id}
               display="flex"
               justifyContent="space-between"
               alignItems="center"
@@ -228,13 +232,14 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {item.website_url}
                 </Typography>
-                <Typography color={colors.grey[100]}>
+                {/* <Typography color={colors.grey[100]}>
                   {transaction.user}
-                </Typography>
+                </Typography> */}
               </Box>
-              <Box color={colors.grey[100]}>{transaction.date}</Box>
+              <Box color={colors.grey[100]}>{item.date}</Box>
+              <Box color={colors.grey[100]}>{item.login_time}</Box>
               <Button
               style={{backgroundColor:'#a4a9fc'}}
                 // bg={colors.greenAccent[500]}
@@ -283,7 +288,7 @@ const Dashboard = () => {
 
 
         <Box
-          gridColumn="span 12"
+          gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -300,9 +305,9 @@ const Dashboard = () => {
             Blocked Site Log
             </Typography>
           </Box>
-          {mockTransactions.map((transaction, i) => (
+          {BlockedLog.map((item) => (
             <Box
-              key={`${transaction.txId}-${i}`}
+              key={item.id}
               display="flex"
               justifyContent="space-between"
               alignItems="center"
@@ -315,14 +320,15 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {item.website_url}
                 </Typography>
-                <Typography color={colors.grey[100]}>
-                  {transaction.user}
-                </Typography>
+                {/* <Typography color={colors.grey[100]}> */}
+                  {/* {item.user} */}
+                {/* </Typography> */}
               </Box>
-              <Box color={colors.grey[100]}>{transaction.date}</Box>
-              <Box color={colors.grey[100]}>Number Of Times</Box>
+              <Box color={colors.grey[100]}>{item.date}</Box>
+              <Box color={colors.grey[100]}>{item.login_time}</Box>
+              <Box color={colors.grey[100]}>{item.attempts} attempts</Box>
               <Button
               style={{backgroundColor:'#a4a9fc'}}
                 // bg={colors.greenAccent[500]}

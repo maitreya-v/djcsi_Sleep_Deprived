@@ -19,6 +19,8 @@ import Team from '../assets/images/team.png';
 import { motion } from "framer-motion";
 import testimonials from '../components/Testimonials.json'
 import Card from '../components/Card'
+import axios from "axios";
+// import ExtensionApp from './extension/extensionApp'
 // import {Typography} from '@mui/material'
 import {
   MapContainer,
@@ -57,6 +59,16 @@ const Home = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const { t } = useTranslation();
 
+
+  useEffect(()=>{
+    const postObj={
+      'url':'www.ucoz.com'
+    }
+    axios.post('https://efd8-136-232-1-174.ngrok-free.app/api/web_block/',postObj).then((res)=>{
+      console.log(res.data.status)
+    })
+  })
+
   const [theme, setTheme] = useState("emerald");
   useEffect(() => {
     localStorage.setItem("color", theme);
@@ -93,6 +105,7 @@ const Home = () => {
   }, [destination]);
   return (
     <div className={`w-full h-full relative `}>
+      {/* <ExtensionApp/> */}
       {/* {theme == "amber" ? (
         <Background backgroundVideo={monuments} theme={theme} />
       ) : theme == "sky" ? (
