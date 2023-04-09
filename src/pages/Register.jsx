@@ -116,7 +116,7 @@ const Register = () => {
 
     var config = {
       method: "post",
-      url: "https://efd8-136-232-1-174.ngrok-free.app/api/register/",
+      url: "https://django-cloudrun-awg4zxeuca-uc.a.run.app/api/register/",
       data: data,
     };
 

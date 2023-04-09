@@ -27,7 +27,7 @@ const Otp = () => {
       'otp':input
     }
     setInput('')
-    axios.post('https://efd8-136-232-1-174.ngrok-free.app/api/otp/',postObj).then((res)=>{
+    axios.post('https://django-cloudrun-awg4zxeuca-uc.a.run.app/api/otp/',postObj).then((res)=>{
       console.log(postObj)
       console.log(res)
       navigate('/')

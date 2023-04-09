@@ -17,7 +17,7 @@ const [result,setResult] = useState('');
             'url':text
           }
           console.log(postObj)
-          axios.post('https://efd8-136-232-1-174.ngrok-free.app/api/web_block/',postObj).then((res)=>{
+          axios.post('https://django-cloudrun-awg4zxeuca-uc.a.run.app/api/web_block/',postObj).then((res)=>{
             setResult(res.data.status)
             console.log(res.data.status)
           })

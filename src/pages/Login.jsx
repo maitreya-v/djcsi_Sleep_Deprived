@@ -32,7 +32,7 @@ const Login = () => {
     const uuid = user.email.split("@")[0];
     var config = {
       method: "post",
-      url: "https://efd8-136-232-1-174.ngrok-free.app/api/login/",
+      url: "https://django-cloudrun-awg4zxeuca-uc.a.run.app/api/login/",
       data: data,
     };
 
