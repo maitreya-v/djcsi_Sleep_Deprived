@@ -19,18 +19,23 @@ import BarGraph from "../../components/BarGraph";
 import TimeRemaining from '../../components/TimeRemaining';
 import BlockedLog from '../BlockedLog.json'
 import RecentlyViewed from '../RecentlyVisited.json'
+import axios from "axios";
 import { useEffect } from "react";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   
  
-  
+  useEffect(()=>{
+    axios.get('https://django-cloudrun-awg4zxeuca-uc.a.run.app/visualize').then((res)=>{
+      console.log(res);
+    })
+  })
 
   return (
   <>
-  {/* <Navbar/> */}
    {/* <div data-aos='zoom-in-up'> */}
+
    <Box m="20px" >
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
