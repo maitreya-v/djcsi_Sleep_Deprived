@@ -244,9 +244,12 @@ def SafeSearch(request):
         data = response.json()
         results += data['items']
 
-    # for item in results:
-    #     print(f"Title: {item['title']}")
-    #     print(f"Link: {item['link']}")
-    #     print()
+    results1 = []
 
-    return Response({'results': results}, status=status.HTTP_200_OK)
+    for item in results:
+        results1.append({'title': item['title'], 'link': item['link']})
+        # print(f"Title: {item['title']}")
+        # print(f"Link: {item['link']}")
+        # print()
+
+    return Response({'results': results1}, status=status.HTTP_200_OK)
